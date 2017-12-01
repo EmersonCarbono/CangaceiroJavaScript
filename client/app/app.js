@@ -4,4 +4,4 @@ var controller = new NegociacaoController();
 //
 document
     .querySelector('.form')
-    .addEventListener('submit',controller.adicionar);
+    .addEventListener('submit',controller.adicionar.bind(controller));
