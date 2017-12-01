@@ -1,7 +1,5 @@
 class Negociacao{
 
-    //Teste de Commit
-
     constructor(_data, _quantidade, _valor){
         //Atributos da Classe Negociacao.
 
