@@ -1,6 +1,6 @@
 class NegociacaoController{
 
-     constructor(){   
+    constructor(){   
         // Pegar os elementos
         // Por padrão o querySelector retorna os valores em String, lembre-se de converter
         // No JS podemos adicionar funções as variaveis então podemos reduzir nosso codigo
@@ -15,10 +15,17 @@ class NegociacaoController{
     adicionar(){
         // Cancelar a submissão do evento, não atualiza a tela quando da submit
         event.preventDefault();
-        console.log(this._inputData.value);
-        console.log(parseInt(this._inputQuantidade.value));
-        console.log(parseFloat(this._inputValor.value));
-        alert('Chamei a ação do controle');
+
+        // o ... é o spread	operator ele separa os itens da lista e atribui cada um separadamente a o constructor
+        let data = new Date(...this._inputData.value
+            .split('-')
+            .map((item, indice) => item - indice % 2 ));
+
+        let negociacao = new Negociacao(data,
+            parseInt(this._inputQuantidade.value),
+            parseFloat(this._inputValor.value)
+        )
+        console.log(negociacao.data)
     }
 }
 
