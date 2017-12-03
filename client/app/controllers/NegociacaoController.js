@@ -16,16 +16,21 @@ class NegociacaoController{
         // Cancelar a submissão do evento, não atualiza a tela quando da submit
         event.preventDefault();
 
+        // Instanciando o Converter Data
+        //let converter = new DateConverter; <- Como esta classe não tem nenhum atributo podemos deixas seus metodos static e chamalos sem criar a instancia
+
+
         // o ... é o spread	operator ele separa os itens da lista e atribui cada um separadamente a o constructor
-        let data = new Date(...this._inputData.value
-            .split('-')
-            .map((item, indice) => item - indice % 2 ));
+        let data = DateConverter.paraData(this._inputData.value)
 
         let negociacao = new Negociacao(data,
             parseInt(this._inputQuantidade.value),
             parseFloat(this._inputValor.value)
-        )
-        console.log(negociacao.data)
+        );
+
+        let dia_mes_ano = DateConverter.paraTexto(negociacao.data);
+
+        console.log(dia_mes_ano);
     }
 }
 
