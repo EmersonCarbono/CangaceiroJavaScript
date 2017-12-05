@@ -19,7 +19,6 @@ class NegociacaoController{
         // Instanciando o Converter Data
         //let converter = new DateConverter; <- Como esta classe não tem nenhum atributo podemos deixas seus metodos static e chamalos sem criar a instancia
 
-
         // o ... é o spread	operator ele separa os itens da lista e atribui cada um separadamente a o constructor
         let data = DateConverter.paraData(this._inputData.value)
 
