@@ -10,26 +10,26 @@ class NegociacaoController{
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
+        this._negociacoes = new Negociacoes();
     }
 
-    adicionar(){
-        // Cancelar a submissão do evento, não atualiza a tela quando da submit
+    adicionar(event){
         event.preventDefault();
-
-        // Instanciando o Converter Data
-        //let converter = new DateConverter; <- Como esta classe não tem nenhum atributo podemos deixas seus metodos static e chamalos sem criar a instancia
-
-        // o ... é o spread	operator ele separa os itens da lista e atribui cada um separadamente a o constructor
-        let data = DateConverter.paraData(this._inputData.value)
-
-        let negociacao = new Negociacao(data,
+        this._negociacoes.adiciona(this._criarNegociacao());
+        this._limpaFormulario();
+    }
+    _limpaFormulario(){
+        this._inputData.value = '';
+        this._inputQuantidade.value = 1;
+        this._inputValor.value = 0.0;
+        this._inputData.focus();
+    }
+    _criarNegociacao(){
+        return new Negociacao(
+            DateConverter.paraData(this._inputData.value),
             parseInt(this._inputQuantidade.value),
             parseFloat(this._inputValor.value)
         );
-
-        let dia_mes_ano = DateConverter.paraTexto(negociacao.data);
-
-        console.log(dia_mes_ano);
     }
 }
 

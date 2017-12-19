@@ -1,6 +1,6 @@
 class Negociacoes{
     constructor(){
-        _negocicoes = [];
+        this._negocicoes = [];
     }
 
     adiciona(negociacao){
@@ -8,6 +8,6 @@ class Negociacoes{
     }
 
     paraArray(){
-        return this._negocicoes;
+        return [].concat(this._negocicoes);
     }
 }
